@@ -1,0 +1,115 @@
+*{
+	margin:0px;
+	padding:0px;
+	font-family: 'Roboto Slab', serif;
+}
+#containerheader{
+	width: 100%;
+    height: auto;
+    background-color: #80E2E7;
+}
+.logo_imagen{
+	width: 48px;
+	margin-right: 10px;
+	margin-top: 5px;
+}
+.pets_app{
+	font-size: 25px;
+	margin-right: 39.4%;
+	margin-top: 12px;
+	color: black;
+	font-weight: bold;
+}
+header{
+    width: 100%;
+    z-index: -1;
+}
+
+.nav ul  {
+   display: flex;
+   color: white;
+   background-color: #80E2E7;
+   margin: 0;
+   justify-content: flex-end;
+   list-style:none;
+}
+.nav li a{
+    display: block;
+    padding: 20px 20px;
+    color:white;
+    font-size: 17px;
+    text-decoration:none;
+}
+.nav ul ul{
+    width: 125px;
+    display: block;
+	background-color: #80E2E7;
+    position: absolute;
+    top: 60px;
+    margin-left: 14px;
+    opacity: 0;
+    
+}
+.nav ul li:hover ul{
+    opacity: 1;
+}
+.form{
+    margin-left:  27%;
+}
+.imagen{
+    width: 60px;
+}
+.formula_medica{
+	border: 1px solid #80E2E7;
+	width: 70%;
+	height: auto;
+
+}
+.formula_medica input{
+    width: 25%;
+    padding: 3px;
+}
+.input1{
+    margin-left: 7.4%;
+}
+.input2{
+    margin-left: 5.8%;
+}
+.input3{
+    margin-left: 8.6%;
+}
+.label1{
+    font-size: 20px; 
+    margin-left: 11%;
+}
+.label2{
+    font-size: 20px; 
+    margin-left: 11%;
+}
+.label3{
+    font-size: 20px; 
+    margin-left: 11%;
+}
+.texarea1{
+    width:465px; 
+    margin-left: 29%; 
+    margin-top: -3%;
+    padding-bottom: 50px;
+}
+.boton{
+		width: 40%;
+		padding: 5px;
+		padding-left: 5px;
+		margin-left: 35%;
+		border-radius: 5px;
+		border:1px solid #3498db;
+		color:black;
+		margin-bottom: 20px;
+		font-size:15px;
+		background: none;
+		outline: none;
+}
+.boton:hover{
+	background: #80E2E7;
+	color: black;
+}

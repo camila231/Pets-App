@@ -1,0 +1,63 @@
+*{
+	margin:0px;
+	padding:0px;
+	font-family: 'Roboto Slab', serif;
+}
+.container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.containertitulo{
+	grid-column-start: 1;
+	grid-column-end: 4;
+
+}
+h5{
+    text-align: justify;
+    font-size: 14px;
+    margin-left: 2%;
+}
+.estado{
+    display: block;
+    width: 60%;
+    margin-left: 5%;
+    padding: 5px;
+    background: #F0FFFF;
+    border: none;
+    border-bottom: 1px solid paleturquoise ;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+#boton{
+    width: 61%;
+	height: 30px;
+	margin-left: 5%;
+    border: 1px solid paleturquoise;
+	color: black;
+    background: #81ecec;
+    cursor: pointer;
+}
+.labelhora{
+	font-size: 15px;
+	margin-left: 4%;
+}
+.hora{
+	width: 22%;
+	margin-left:4%;
+    padding: 5px;
+    background: #F0FFFF;
+    border: none;
+    border-bottom: 1px solid paleturquoise ;
+}
+#horabutton{
+	width: 22%;
+	margin-left:4%;
+    padding: 5px;
+    background: 	#81ecec;
+    border: none;
+    border-bottom: 1px solid paleturquoise ;
+    cursor: pointer;
+}
+.icono{
+    cursor: pointer;
+}

@@ -1,0 +1,37 @@
+*{
+	margin:0px;
+	padding:0px;
+	font-family: 'Roboto Slab', serif;
+}
+.card_1{
+    border-right:2px solid #80E2E7;
+    width:33%;
+    height: 500px;
+    margin-left: 16.4%;
+}
+.img_vacuna{
+    width: 250px; 
+    height: 210px;
+}
+.card_2{
+    width: 95%;
+}
+.titulo_vacunacion, .titulo_consulta{
+    font-size: 40px;
+    font-weight: bold;
+}
+.informacion_vacuna, .informacion_consulta{
+    font-size: 23px; 
+    color: #989387;  
+    text-align: justify;
+}
+.card_3{
+    width: 33%;
+    height: 500px;
+    margin-left: 50%;
+    margin-top: -37%;
+}
+.card_4{
+    width: 95%;
+    margin-left: 4%;
+}

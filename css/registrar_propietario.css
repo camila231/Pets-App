@@ -1,0 +1,76 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    font-family: 'Roboto Slab', serif;
+}
+body{
+    background-color: white;
+}
+
+div#container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    
+    
+}
+/*div.columna-1{
+background-color: rgb(214, 255, 253);
+}
+div.columna-2{
+background-color: greenyellow;
+}*/
+
+.titulo{
+    font-size: 20px;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.icono{
+    width: 48px; 
+    height: 45px;
+}
+.letra{
+    margin-left: 5%;
+}
+input{
+    display: block;
+    width: 80%;
+    margin-left: 5%;
+    padding: 5px;
+    background: honeydew;
+    border: none;
+    border-bottom: 1px solid paleturquoise;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+input[type="text"]{
+color:black;
+}
+
+#boton{
+    width: 25%;
+    height: 33px;
+    margin-left: 82%;
+    margin-top: 5%;
+    position: relative;
+    border: 1px solid #0DA82A;
+    border-radius: 3px;
+	font-size: 19px;
+	color: black;
+    background: #AAF6B8;
+    box-sizing: border-box;
+}
+
+#boton[type="submit"]{
+    text-decoration: none;
+    
+}
+
+#boton[type="submit"]:hover{
+    cursor: pointer;
+    /*background: rgb(246, 90, 220);*/
+}

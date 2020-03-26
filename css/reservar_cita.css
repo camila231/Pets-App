@@ -1,0 +1,105 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    font-family: 'Roboto Slab', serif;
+}
+div#container{
+    display: grid;
+    grid-template-columns: 100%;
+}
+/*modal*/
+.popup{
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 104%;
+    position: absolute;
+    top: -25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+}
+.popup-content{
+    height: auto;
+    width: 700px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+}
+.close{
+    position: absolute;
+    font-size: 40px;
+    top: 5px;
+    color: black;
+    right: 14px;
+    padding: 5px;
+    cursor: pointer;
+}
+th,td{
+    padding-left: 10px;
+}
+.reservar_cita{
+    margin:auto;
+    margin-top: 10px;
+    width: 30%;
+    height: auto;
+    border:1px solid black;
+    border-radius: 5px;
+    padding-left:20px;
+    padding-right:20px;
+    padding-top: 20px
+}
+.reservar_cita input{
+    width: 100%;
+    padding: 5px;
+    font-size:15px;
+    padding-left: 5px;
+    border-radius: 5px;
+    border:1px solid #80E2E7;
+    margin-bottom: 5px;
+    outline: none;
+}
+#disponible{
+    width: 90%;
+    padding: 5px;
+    font-size:15px;
+    padding-left: 5px;
+    border-radius: 5px;
+    border:1px solid #80E2E7;
+    margin-bottom: 5px;
+    outline: none;
+}
+#open{
+    font-size: 27px;
+    margin-left: 3px;
+    cursor: pointer;
+}
+.reservar_cita select{
+    width: 102%;
+    padding: 5px;
+    font-size:15px;
+    padding-left: 5px;
+    border-radius: 5px;
+    border:1px solid #80E2E7;
+    margin-bottom: 5px;
+    outline: none;
+}
+.reservar_cita button{
+    width: 102%;
+    padding: 5px;
+    padding-left: 5px;
+    border-radius: 5px;
+    border:1px solid #80E2E7;
+    color: black;
+    margin-bottom: 20px;
+    font-size:15px;
+    background: none;
+    outline: none;
+
+}
+.reservar_cita button:hover{
+    background: #80E2E7;
+    color:  black;
+  }

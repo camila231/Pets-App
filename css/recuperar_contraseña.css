@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+form{
+    margin:auto;
+    margin-top: 140px;
+    width: 27%;
+    height: auto;
+    border:1px solid black;
+    border-radius: 5px;
+    padding-left:20px;
+    padding-right:20px;
+    padding-top: 20px
+}
+h1{
+    font: bold;
+}
+label{
+    font-size: 19px;
+    margin-right: 140px;
+}
+.nuevacontraseña{
+    margin-right: 170px;
+}
+.codigo{
+    margin-right: 255px;
+}
+input{
+    width: 80%;
+    padding: 5px;
+    font-size:15px;
+    padding-left: 5px;
+    border-radius: 5px;
+    border:1px solid #80E2E7;
+    margin-bottom: 5px;
+    outline: none;
+}
+.rol{
+    width: 83%;
+    padding: 5px;
+    font-size:15px;
+    padding-left: 5px;
+    border-radius: 5px;
+    border:1px solid #80E2E7;
+    margin-bottom: 5px;
+    outline: none;
+}
+.button{
+    width: 83%;
+    padding: 5px;
+    font-size:15px;
+    padding-left: 5px;
+    border-radius: 5px;
+    background-color: #80E2E7;
+    border:1px solid #80E2E7;
+    margin-bottom: 40px;
+    outline: none;
+    cursor: pointer;
+}
