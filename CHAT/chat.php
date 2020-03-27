@@ -22,6 +22,7 @@
             req.open('GET', 'chat.php', true);
             req.send();
         }
+        //refrescar cada minuto
         setInterval(function (){ajax();}, 1000);
     
       
