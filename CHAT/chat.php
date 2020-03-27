@@ -14,7 +14,7 @@
             var req = new XMLHttpRequest();
 
             req.onreadystatechange = function () {
-                if (req.readyState == 4) {
+                if (req.readyState == 4 && req.status == 200) {
                     document.getElementById('chat').innerHTML = req.responseText;
                 }
             }
@@ -44,7 +44,7 @@
                 <?php 
                     endwhile; 
                 ?>
-            </div>
+                </div>
         </div>
             <form method="POST" action="codigoChat.php">
                 <input type="text" placeholder="Ingresa tu nombre" name="nombre">

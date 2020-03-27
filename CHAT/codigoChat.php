@@ -3,8 +3,7 @@ include "conexion.php";
                 if (isset($_POST['enviar'])) {
                     $nombre = $_POST['nombre'];
                     $mensaje = $_POST['mensaje'];
-                    echo $nombre;
-                    echo $mensaje;
+
                    $consulta = "INSERT INTO chat(nombre,mensaje) VALUES ('$nombre','$mensaje')";
                     $ejecutar = $conexion->query($consulta);
 
@@ -12,9 +11,11 @@ include "conexion.php";
                     
 
                     if ($consulta) {
-                        echo "<script> window.location = 'index.php'</script>";
+                        echo "<script> window.location = 'chat.php'</script>";
                     }else{
                         echo "sadsa";
                     }
                 }
+            
+
             ?>
