@@ -13,7 +13,7 @@ $telefono_1 = $_POST['telefono1'];
 $celular_1 = $_POST['celular1'];
 $usuario_veterinario = $_POST['usuarioveterinario'];
 $clave_veterinario = $_POST['claveveterinario'];
-$estado = 'activar';
+$estado = 'Disponible';
 
 $confirmarclave = $_POST['confirmarclave'];
 

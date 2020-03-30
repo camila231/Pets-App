@@ -51,32 +51,8 @@ $motivo_consulta =$_POST['motivo_editar'];
 </head>
 <body>
     
-<div id="containerheader"> 
-    <header>
-    <div id="logo"><img src="../images/LOGOO.PNG" class="logo_imagen"><a class="pets_app">Pets App</a></div>
-            <nav class="nav">
-                <ul>
-                    <li><a href="../vistas/pagina_veterinario.php">Inicio</a>
-                    </li>
-                    <li><a href="../vistas/perfil_veterinario.php">Perfil</a>
-                    </li>
-                      <li><a href="#">Chat</a>
-                    </li>
-                    <li><a href="#">Historia clínica</a>
-                        <ul>
-                           <li><a href="../vistas/historia_clinica1.php">Crear</a></li>
-                           <li><a href="../vistas/ver_historia_clinica.php">Ver</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="../vistas/cambiar_clave_veterinario.php">Cambiar contraseña</a>
-                    </li>
-                    <li><a href="../php/salir.php">Cerrar sesión</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-    </div>
-    <br> <br>
+<?php require_once '../header/header_veterinario.php'; ?>
+<br>
     <div class="container">
         <form action="../php/codeditar.php" method="POST">
         <h1 class="titulo"><center><img src="../images/icono.png" class="icono">Historia clínica</center></h1>

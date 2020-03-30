@@ -27,7 +27,7 @@ if (isset($_SESSION['propietario'])) {
     <br>
     <?php
     include '../php/conexion.php';
-    $query = mysqli_query($conexion,"SELECT * FROM tbl_veterinario WHERE estado = 'activar'");
+    $query = mysqli_query($conexion,"SELECT * FROM tbl_veterinario WHERE estado = 'Disponible'");
     while($fila = mysqli_fetch_array($query)){
     ?>
     <center>

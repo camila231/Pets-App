@@ -42,12 +42,17 @@ if (isset($_SESSION['veterinario'])) {
 <br>
 
 <h5><?php echo $row['nombre_1'];?> <?php echo $row['apellido_1'];?>, desde este momento tu estado para atender nuestros
-servicios es disponible, si no <br>lo deseas así debes ingresar deshabilitar, cuando quieras volver a estar disponible lo único
-que <br> tienes que hacer es ingresar activar.</h5>
+servicios es disponible, si no <br>lo deseas así debes ingresar no disponible, cuando quieras volver a estar disponible lo único
+que <br> tienes que hacer es ingresar disponible.</h5>
 <br>
 <center><form action="../vistas/pagina_veterinario.php" method="POST">
 <textarea hidden name="identificacion_veterinario" id="" cols="30" rows="10"><?php echo $row['identificacion_veterinario'];?></textarea>
-    <input type="text" name="estado" class="estado" value="<?php echo $row['estado'];?>">
+    <input type="text" name="estado" disabled class="estado" value="<?php echo $row['estado'];?>">
+    <select name="estado" class="estado">
+                <option disable selected>Disponibilidad</option>
+                <option >Disponible</option>
+                <option >No disponible</option>
+               </select>
     <input type="submit" name="btn_estado" id="boton"  value="Actualizar">
 <?php
         }

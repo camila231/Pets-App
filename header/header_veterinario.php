@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto+Slab&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/5e676b5ade.js"></script>
     <link  href="../css/header_veterinario.css" rel="stylesheet" type="text/css">
     
     <title>Document</title>
@@ -21,12 +22,20 @@
                       <li><a href="#">Chat</a>
                     </li>
                     <li><a href="#">Historia clínica</a>
+                    <center>
                         <ul>
                            <li><a href="../vistas/historia_clinica1.php">Crear</a></li>
                            <li><a href="../vistas/ver_historia_clinica.php">Ver</a></li>
                         </ul>
+</center>
                       </li>
                       <li><a href="../vistas/cambiar_clave_veterinario.php">Cambiar contraseña</a>
+                    </li>
+                    <?php
+                    $consulta = mysqli_query($conexion,"SELECT * from tbl_solicitar_cita WHERE  leido = 0");
+                    $contar = mysqli_num_rows($consulta);
+                    ?>
+                      <li id="notificacion"><a href="../vistas/datos_notificacion.php" ><i class="fa fa-bell" id="notificacion"></i><?php echo $contar;?></a>
                     </li>
                     <li><a href="../php/salir.php">Cerrar sesión</a>
                     </li>

@@ -15,6 +15,7 @@ if (isset($_SESSION['propietario'])) {
     <title>Cambiar contraseña</title>
 </head>
 <body>
+        </script>
     <div id="container">
     <?php require_once '../header/header_propietario.php'; ?>
     <div class="cambiar">
@@ -28,6 +29,8 @@ if (isset($_SESSION['propietario'])) {
                 </form>
 </div> 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="../js/alertas.js"></script>
 </body>
 </html>
 <?php

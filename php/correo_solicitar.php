@@ -10,9 +10,10 @@ if(isset($_POST['btn_solicitar'])){
     $tipo_Consulta = $_POST['tipo_Consulta'];
     $identificacion_propietario = $_POST['identificacion_propietario'];
     $barrio = $_POST['barrio'];
+    $leido = 0;
 
     $body ="EL propietario identificado con " . $identificacion_propietario . "<br>Ubicado en " . $direccion . "<br>En el barrio " . $barrio . "<br>A solicitado el tipo de consulta para " . $tipo_Consulta;
-    $query = mysqli_query($conexion,"INSERT INTO tbl_solicitar_cita(direccion,tipo_Consulta,identificacion_propietario,barrio) VALUES ('$direccion','$tipo_Consulta','$identificacion_propietario','$barrio')") or die(mysqli_error($conexion));    
+    $query = mysqli_query($conexion,"INSERT INTO tbl_solicitar_cita(direccion,tipo_Consulta,identificacion_propietario,barrio,leido) VALUES ('$direccion','$tipo_Consulta','$identificacion_propietario','$barrio','$leido')") or die(mysqli_error($conexion));    
 
     $query = mysqli_query($conexion, "SELECT * FROM tbl_veterinario");
 

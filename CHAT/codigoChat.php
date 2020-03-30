@@ -12,7 +12,7 @@ include "conexion.php";
                     
 
                     if ($consulta) {
-                        echo "<script> window.location = 'index.php'</script>";
+                        echo "<script> window.location = 'chat.php'</script>";
                     }else{
                         echo "sadsa";
                     }
