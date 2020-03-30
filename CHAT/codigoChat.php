@@ -3,8 +3,7 @@ include "conexion.php";
                 if (isset($_POST['enviar'])) {
                     $nombre = $_POST['nombre'];
                     $mensaje = $_POST['mensaje'];
-                    echo $nombre;
-                    echo $mensaje;
+
                    $consulta = "INSERT INTO chat(nombre,mensaje) VALUES ('$nombre','$mensaje')";
                     $ejecutar = $conexion->query($consulta);
 
@@ -17,4 +16,6 @@ include "conexion.php";
                         echo "sadsa";
                     }
                 }
+            
+
             ?>
