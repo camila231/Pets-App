@@ -85,41 +85,18 @@ echo "<script> window.location = '../vistas/pagina_veterinario.php'</script>";
     <?php
     include '../php/conexion.php';
     $id_v = $_SESSION['veterinario'];
-    $query = mysqli_query($conexion,"SELECT hora_1 FROM tbl_horario WHERE identificacion_veterinario = '$id_v'");
+    $query = mysqli_query($conexion,"SELECT * FROM tbl_horario WHERE identificacion_veterinario = '$id_v'");
     while($fila = mysqli_fetch_array($query)){
     ?>
-    <form action="../vistas/pagina_veterinario.php">
-    <input type="text" class="hora" disabled value="<?php echo $fila['hora_1'];?>" name="identificacion_veterinario" ><i class="fa fa-trash-o icono" name="btn_borrar" id="icono"></i>
+    <textarea hidden  name="identificacion" cols="30" rows="10"><?php echo $fila['identificacion_veterinario'];?></textarea>
+    <input type="text" class="hora" disabled value="<?php echo $fila['hora_1'];?>" name="identificacion" >
+    <a href="../php/cod_borrar_hora.php?hora=<?php echo $fila['codigo_hora']; ?>" ><input type="submit"  value="borrar"></a>
     <?php
     }
     ?>
-    </form>
-    <!--borrar horario-->
-    <?php 
-include '../php/conexion.php';
-
-if (isset($_POST['btn_borrar'])){
-    $hora_1 = $_POST['hora_1'];
-    $identificacion_veterinario = $_POST['identificacion_veterinario'];
-    
-    
-    $query = mysqli_query($conexion ,"DELETE FROM tbl_horario WHERE identificacion_veterinario = '$identificacion_veterinario'") or die (mysqli_error($conexion));   
-
-    if ($query) {
-        echo "<script>alert('Su horario se agrego exitosamente..')</script>";
-        echo "<script> window.location = '../vistas/pagina_veterinario.php'</script>";
-    }
-    else{
-        echo "Error";
-    }
-}
-?>
-
 </div>
-    <!--fin horario-->
     </div>
 </body>
-<script type="text/javascript" src='../js/modal.js'></script>
 </html>
 <!--Agregar horario-->
 <?php 
@@ -128,10 +105,7 @@ include '../php/conexion.php';
 if (isset($_POST['btn'])){
     $id_v = $_SESSION['veterinario'];
     $hora_1 = $_POST['hora_1'];
-    
-    
     $query = mysqli_query($conexion ,"INSERT INTO tbl_horario(hora_1,identificacion_veterinario) VALUES ('$hora_1','$id_v')") or die (mysqli_error($conexion));   
-
     if ($query) {
         echo "<script>alert('Su horario se agrego exitosamente..')</script>";
         echo "<script> window.location = '../vistas/pagina_veterinario.php'</script>";

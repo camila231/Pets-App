@@ -34,21 +34,21 @@ if (isset($_SESSION['propietario'])) {
     <table>
         <tr>
         <th hidden>Cédula</th>
-        <th>Primer nombre</th>
-        <th>Segundo nombre</th>
-        <th>Primer apellido</th>
-        <th>Segundo apellido</th>
-        <th id="accion">Acción</th>
+        <th hidden>Primer nombre</th>
+        <th hidden>Segundo nombre</th>
+        <th hidden>Primer apellido</th>
+        <th hidden>Segundo apellido</th>
+        <th hidden id="accion">Acción</th>
         </tr>
         <tr>
-        <td hidden><?php echo $fila['identificacion_veterinario'];?> </td>
+        <td hidden><?php echo $fila['identificacion_veterinario'];?><td>
             <td><?php echo $fila['nombre_1'];?> </td>
             <td><?php echo $fila['nombre_2'];?> </td>
             <td> <?php echo $fila['apellido_1'];?></td>
             <td><?php echo $fila['apellido_2'];?></td>
-            <td><a href="../vistas/reservar_cita.php?nombre1=<?php echo $fila['nombre_1'];?><?php echo $fila['nombre_2'];?>
-            <?php echo $fila['apellido_1'];?><?php echo $fila['apellido_2'];?>">Agregar</a></td>
+            <td><a href="../vistas/reservar_cita.php?nombre1=<?php echo $fila['identificacion_veterinario'];?>">Agregar</a></td>
         </tr>
+        
 <?php
 
     }
@@ -67,10 +67,13 @@ if (isset($_SESSION['propietario'])) {
                 <?php
                 $id = $_SESSION['propietario'];
                  if(isset($_GET['nombre1'])){
+                     $nombre = $_GET['nombre1'];
+                    $consulta = mysqli_query($conexion, "SELECT * FROM tbl_veterinario  WHERE identificacion_veterinario = '$nombre'");
+                    while ($row = mysqli_fetch_array($consulta)){
                     ?>
-                <input type="text"  id="disponible" placeholder="" value="<?php echo $_GET['nombre1']?>" name="veterinario">
+                <input type="text"  id="disponible" placeholder="" value="<?php echo $row['nombre_1']?><?php echo $row['nombre_2']?><?php echo $row['apellido_1']?><?php echo $row['apellido_2']?>" name="veterinario">
                 <?php
-            }
+                } }
                 ?><i class="fa fa-user-md "  id="open"  ></i>
                 <br><br>
                 <label>Dirección</label>
@@ -82,7 +85,16 @@ if (isset($_SESSION['propietario'])) {
                 <label>Hora</label>
                 <select name="tipo_Consulta">
                 <option disabled selected>Hora disponible</option>
-                <option><?php echo $fila['hora_1'];?></option>
+                <?php 
+                if(isset($_GET['nombre1'])){
+                $nombre = $_GET['nombre1'];
+                $horario = mysqli_query($conexion , "SELECT * FROM tbl_horario WHERE identificacion_veterinario ='$nombre'");
+                while($rowhora = mysqli_fetch_array($horario)){
+                    ?>
+                    <option value="<?php echo $rowhora['identificacion_veterinario']?>"><?php echo $rowhora['hora_1'] ?></option>
+                 <?php
+                } }
+                ?>
                 </select>
                 <label>Tipo de consulta</label>
                 <select name="tipo_Consulta">
