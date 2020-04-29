@@ -4,6 +4,9 @@
 </head>
 </html>
 <?php
+/**
+ * Conexión a la base de datos
+ */
 	$servername = "localhost";
     $username = "root";
   	$password = "";
@@ -15,7 +18,9 @@
       }
 
     $salida = "";
-
+/**
+ * Consulta de busqueda en la tabla historia clínica
+ */
     $query = "SELECT * FROM tbl_historia_clinica ";
 
     if (isset($_POST['consulta'])) {
@@ -26,7 +31,9 @@
     }
 
     $resultado = $conexion->query($query);
-
+/**
+ * Si existe lo que esta buscando  en la consulta, lo muestra en la tabla
+ */
     if ($resultado->num_rows>0) {
     	$salida.="<table id='borde'>
     			<thead>
@@ -46,13 +53,17 @@
     					<td>".$fila['id_propietario']."</td>
     					<td>".$fila['nombre_mascota']."</td>
 						<td>".$fila['fecha_consulta']."</td>
-						<td><button class='boton'><a  href='../vistas/editar.php?historia=".$fila['codigo_de_mascota']." '>Ver</a></button></td>
+						<td><button class='boton'><a  href='../vistas/editar.php?historia=".$fila['codigo_de_mascota']." 
+						'>Ver</a></button></td>
 					
     				</tr>";
 
     	}
     	$salida.="</tbody></table>";
-    }else{
+	}
+/**
+ * Sino encuentra datos en la busqueda, muestra un mensaje
+ */else{
     	$salida.="No hay ninguna historia clínica con esos datos.";
 	}
 	
