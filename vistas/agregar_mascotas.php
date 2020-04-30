@@ -1,6 +1,9 @@
 <?php
 include '../php/conexion.php';
 session_start();
+/**
+ * Si existe la sesión del propietario haga lo siguiente
+ */
 if (isset($_SESSION['propietario'])) {
 ?>
 <!DOCTYPE html>
@@ -19,7 +22,7 @@ if (isset($_SESSION['propietario'])) {
 <?php require_once '../header/header_propietario.php'; ?>
   <br><br>
   <div class="boton">
-    <button onclick="mostrar()">Agregar mascotas</button>
+    <button onclick="mostrar()">Agregar mascotas</button>  
   </div>
   <div class="columna1">
     
@@ -94,7 +97,6 @@ if (isset($_SESSION['propietario'])) {
 
   </div>
 
-
 </div>
 <script>
   function mostrar(){
@@ -112,7 +114,11 @@ if( document.getElementById("nombre_mascota").value == ""){
 </body>
 </html>
 <?php
-}else{
+}
+/**
+ * Sino está la sesión  del propietario lo direccione al index
+ */
+else{
     header('Location: ../index.php');
 }
 

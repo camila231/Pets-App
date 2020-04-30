@@ -1,6 +1,9 @@
 <?php
 include '../php/conexion.php';
 session_start();
+/**
+ * Si existe la sesión del veterinario haga lo siguiente
+ */
 if (isset($_SESSION['veterinario'])) {
 ?>
 <!DOCTYPE html>
@@ -10,7 +13,8 @@ if (isset($_SESSION['veterinario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto+Slab&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/datos_notificacion.css">
-    <title>Document</title>
+    <link rel="shortcut icon" href="../images/LOGOO.PNG" type="image/x-icon">
+    <title>Notificación</title>
 </head>
 <body>
     <div id="container">
@@ -28,7 +32,13 @@ if (isset($_SESSION['veterinario'])) {
             </tr>
             <?php
             include '../php/conexion.php';
+/**
+ * Consulta a la base de datos de la tabla solicitar cita
+ */
             $query = mysqli_query($conexion,"SELECT * FROM tbl_solicitar_cita WHERE leido = 0 ");
+/**
+ * Ciclo para mostrar los datos de la consulta
+ */
             while($row = mysqli_fetch_array($query)){
               ?>
             <tr>
@@ -49,7 +59,11 @@ if (isset($_SESSION['veterinario'])) {
 </body>
 </html>
 <?php
-}else{
+}
+/**
+ * Sino está la sesión del veterinario  lo direccione al index
+ */
+else{
     header('Location: ../index.php');
 }
 ?>

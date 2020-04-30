@@ -1,3 +1,11 @@
+<?php
+include '../php/conexion.php';
+session_start();
+/**
+ * Si existe la sesión del propietario haga lo siguiente
+ */
+if (isset($_SESSION['propietario'])) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,22 +23,44 @@
        <table>
         <tr>
             <th>Dirección</th>
+            <th>Barrio</th>
             <th>Tipo de consulta</th>
             <th>Veterinario</th>
             <th>Cancelar</th>
             </tr>
+            <?php
+            include '../php/conexion.php';
+/**
+ * Id para llamar la identificación del propietario de esa sesión
+ */
+            $id = $_SESSION['propietario'];
+/**
+ * Consulta en la base de datos de la tabla reservar cita
+ */
+            $query = mysqli_query($conexion,"SELECT * FROM tbl_solicitar_cita WHERE identificacion_propietario = '$id' ");
+/**
+ * Ciclo para mostrar los datos de la consulta
+ */
+            while($row = mysqli_fetch_array($query)){
+              ?>
             <tr>
+            <form  action="../php/cod_borrar_citas.php"  method="POST" >
+            <textarea hidden name="codigo" id="" cols="30" rows="10"><?php echo $row['codigo_solicitar'];?></textarea>
+            <td><?php echo $row['direccion'];?></td>
+            <td><?php echo $row['barrio'];?></td>
+            <td><?php echo $row['tipo_consulta'];?></td>
             <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><input type="submit" value="Cancelar" name="borrar_solicitar"><td>
+            </form>
         </tr>
+        <?php }  ?>
       </table>
         </div>
 
         <div id="reservar">
         <center><h1>Reservar cita</h1></center>
         <table>
+          <center>
         <tr>
             <th>Fecha</th>
             <th>Hora</th>
@@ -38,16 +68,46 @@
             <th>Veterinario</th>
             <th>Cancelar</th>
             </tr> 
+            </center>
+            <?php
+            include '../php/conexion.php';
+/**
+ * Id para llamar la identificación del propietario de esa sesión
+ */
+            $id = $_SESSION['propietario'];
+/**
+ * Consulta en la base de datos de la tabla reservar cita
+ */
+            $query = mysqli_query($conexion,"SELECT * FROM tbl_reservar_cita WHERE identificacion_propietario = '$id' ");
+/**
+ * Ciclo para mostrar los datos de la consulta
+ */
+            while($row = mysqli_fetch_array($query)){
+              ?>
             <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <form  action="../php/cod_borrar_citas.php"  method="POST" >
+            <textarea hidden name="codigo_reserva" id="" cols="30" rows="10"><?php echo $row['codigo_reservar'];?></textarea>
+            <td><?php echo $row['fecha_reserva'];?></td>
+            <td><?php echo $row['hora_reserva'];?></td>
+            <td><?php echo $row['tipo_consulta'];?></td>
+            <td><?php echo $row['veterinario'];?></td>
+            <td><input type="submit" value="Cancelar" name="borrar_reserva"></td>
+            </form>
         </tr>
+        <?php }  ?>
       </table>
         </div>
     </div>
 </div>
 </body>
 </html>
+<?php
+}
+/**
+ * Sino está la sesión  del propietario lo direccione al index
+ */
+else{
+    header('Location: ../index.php');
+}
+
+?>

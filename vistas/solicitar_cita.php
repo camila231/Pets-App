@@ -1,6 +1,9 @@
 <?php
 include '../php/conexion.php';
 session_start();
+/**
+ * Si existe la sesión del propietario haga lo siguiente
+ */
 if (isset($_SESSION['propietario'])) {
 ?>
 <!DOCTYPE html>
@@ -43,7 +46,11 @@ if (isset($_SESSION['propietario'])) {
 </body>
 </html>
 <?php
-}else{
+}
+/**
+ * Sino está la sesión  del propietario lo direccione al index
+ */
+else{
     header('Location: ../index.php');
 }
 

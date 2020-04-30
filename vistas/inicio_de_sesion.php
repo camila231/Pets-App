@@ -1,16 +1,45 @@
 <?php
 require '../php/conexion.php';
+/**
+ * Librerias para utilizar PhpMailer
+ */
 require '../librerias/Exception.php';
 require '../librerias/PHPMailer.php';
 require '../librerias/SMTP.php';
+/**
+ * Si le da click en el botón enviar
+ */
 if(isset($_POST['enviar'])){
+/**
+ * @var String $email       correos de la tabla propietario
+ * @var String $rol         
+ */
   $email = $conexion ->real_escape_string($_POST['email']);
   $rol = $_POST['rol'];
+/**
+ * Si la variable rol es igual a propietario
+ */
   if($rol == 'propietario') {
+/**
+ * Se realiza una consulta en la base de datos de la tabla propietario
+ */
   $propietario = mysqli_query ($conexion, "SELECT * FROM tbl_propietario where email_propietario = '$email'");
+/**
+ * Si propietario es igual a 1
+ * Se envia el correo para recuperar contraseña
+ */
   if(mysqli_num_rows ($propietario) == 1) {
+/**
+ * @var String $nombre     
+ */
     $nombre =mysqli_fetch_array($propietario);
+/**
+ * @var String $token       Crear un código único
+ */
     $token = uniqid();
+/**
+ * Sentencia para actualizar datos de la tabla propietario
+ */
     $actualizar = $conexion ->query("UPDATE tbl_propietario SET token = '$token' WHERE email_propietario = '$email'");
     $ruta = 'http://localhost/Pets_App/vistas/nueva_clave.php?nombre='.$nombre['nombre_1']."&token".$nombre['token'];
     $mensaje = "Código para recuperar su contraseña" ." ".$token. " ". "<a href='$ruta'>Para cambiar tu contraseña da click aquí</a>";
@@ -19,13 +48,32 @@ if(isset($_POST['enviar'])){
   echo "<script>window.location='..';</script>";
   }
   }
+/**
+ * Si la variable rol es igual a veterinario
+ */
   if($rol == 'veterinario') {
+/**
+ * Se realiza una consulta en la base de datos de la tabla veterinario
+ */
     $veterinario = mysqli_query ($conexion, "SELECT * FROM tbl_veterinario where email_veterinario = '$email'");
+/**
+ * Si veterinario es igual a 1
+ * Se envia el correo para recuperar contraseña
+ */
     if(mysqli_num_rows ($veterinario) == 1) {
+/**
+ * @var String $nombre     
+ */
       $nombre =mysqli_fetch_array($veterinario);
+/**
+ * @var String $token       Crear un código único
+ */
       $token = uniqid();
+/**
+ * Sentencia para actualizar datos de la tabla veterinario
+ */
       $actualizar = $conexion ->query("UPDATE tbl_veterinario SET token = '$token' WHERE email_veterinario = '$email'");
-      $ruta = 'http://localhost/App_nuevo/vistas/nueva_clave.php?nombre='.$nombre['nombre_1']."&token".$nombre['token'];
+      $ruta = 'http://localhost/Pets_App/vistas/nueva_clave.php?nombre='.$nombre['nombre_1']."&token".$nombre['token'];
       $mensaje = "Código para recuperar su contraseña" ." ".$token. " ". "<a href='$ruta'>Para cambiar tu contraseña da click aquí</a>";
     }else{
     echo "<script>alert('Los datos son incorrectos, por favor revise e intente nuevamente');</script>";
@@ -34,21 +82,57 @@ if(isset($_POST['enviar'])){
     }
 			$mail = new PHPMailer\PHPMailer\PHPMailer();
 			try{  
-			  $mail->isSMTP();
-			  $mail->SMTPDebug = 0;
-			  $mail->Host = 'smtp.gmail.com';
-			  $mail->SMTPAuth = true;
+/**
+ * Para usar el SMTP
+ */
+        $mail->isSMTP();
+/**
+ * Habilitar el Debug
+ */
+        $mail->SMTPDebug = 0;
+        $mail->Host = 'smtp.gmail.com';
+/**
+ * Habilitar autenticacion SMTP
+ */
+        $mail->SMTPAuth = true;
+/**
+ * Puerto
+ */
 			  $mail->Port = 587;
 			  
-			  $mail->SMTPSecure = 'tls';
-			  $mail->Username = "kevinparra2709@gmail.com";
-			  $mail->Password = "3117027938kevin";
-			  $mail->setFrom('kevinparra2709@gmail.com', "PETS APP");
-			  $mail->addAddress($email);
-			  $mail->isHTML(true);
-			  $mail->Subject = "Cambiar contraseña";
+        $mail->SMTPSecure = 'tls';
+/**
+ * Usuario del correo que se va utilizar para el envio
+ */
+        $mail->Username = "kevinparra2709@gmail.com";
+/**
+ * Clave del correo que se va utilizar para el emvio
+ */
+        $mail->Password = "3117027938kevin";
+/**
+ * El mismo usuario del Username para ejecutar correctamente el correo PHP
+ */
+        $mail->setFrom('kevinparra2709@gmail.com', "PETS APP");
+/**
+ * Los correos donde va a llegar el mensaje 
+ */
+        $mail->addAddress($email);
+/**
+ * Establece el tipo de mensaje a HTML
+ */
+        $mail->isHTML(true);
+/**
+ * El asusto del mensaje
+ */
+        $mail->Subject = "Recuperar contraseña";
+/**
+ * Cuerpo del mensaje
+ */
 			  $mail->Body = "$mensaje";
-			  $mail-> CharSet = 'UTF8';     
+        $mail-> CharSet = 'UTF8';    
+/**
+ * Envia el mensaje
+ */ 
 			  $mail->send();
 			  if ($mail) {
 				echo "<script> alert ('El correo se envio correctamente'); </script>";

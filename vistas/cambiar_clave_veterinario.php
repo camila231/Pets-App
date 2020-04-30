@@ -1,6 +1,9 @@
 <?php
 include '../php/conexion.php';
 session_start();
+/**
+ * Si existe la sesión del veterinario haga lo siguiente
+ */
 if (isset($_SESSION['veterinario'])) {
 ?>
 <!DOCTYPE html>
@@ -20,8 +23,8 @@ if (isset($_SESSION['veterinario'])) {
     <div class="cambiar">
                 <h4>Cambiar Clave</h4>
                 <br>
-                <form action="../php/cod_cambiar_clave.php" method="POST">
-                    <input type="text" name="clave_propietario" id="" placeholder="Ingrese su contraseña actual">
+                <form action="../php/cod_cambiar_clave_veterinario.php" method="POST">
+                    <input type="text" name="clave_veterinario" id="" placeholder="Ingrese su contraseña actual">
                     <input type="password" name="nuevaPassword" id="" placeholder="Nueva contraseña">
                     <input type="password" name="confirmarPassword" id="" placeholder="Confirmar contraseña">
                     <input type="submit" name="btn_cambiar" id="boton" value="Cambiar contraseña">
@@ -31,7 +34,11 @@ if (isset($_SESSION['veterinario'])) {
 </body>
 </html>
 <?php
-}else{
+}
+/**
+ * Sino está la sesión del veterinario lo direccione al index
+ */
+else{
     header('Location: ../index.php');
 }
 ?>

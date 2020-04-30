@@ -1,6 +1,9 @@
 <?php
 include '../php/conexion.php';
 session_start();
+/**
+ * Si existe la sesión del veterinario haga lo siguiente
+ */
 if (isset($_SESSION['veterinario'])) {
 ?>
 <!DOCTYPE html>
@@ -37,7 +40,11 @@ if (isset($_SESSION['veterinario'])) {
 </body>
 </html>
 <?php
-}else{
+}
+/**
+ * Sino está la sesión del veterinario lo direccione al index
+ */
+else{
     header('Location: ../index.php');
 }
 

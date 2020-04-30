@@ -1,6 +1,9 @@
 <?php
 include '../php/conexion.php';
 session_start();
+/**
+ * Si existe la sesión del propietario haga lo siguiente
+ */
 if (isset($_SESSION['propietario'])) {
 ?>
 <!DOCTYPE html>
@@ -27,7 +30,13 @@ if (isset($_SESSION['propietario'])) {
     <br>
     <?php
     include '../php/conexion.php';
+/**
+ * Consulta a la base de datos de la tabla veterinario
+ */
     $query = mysqli_query($conexion,"SELECT * FROM tbl_veterinario WHERE estado = 'Disponible'");
+/**
+ * Ciclo para mostrar los datos de la consulta
+ */
     while($fila = mysqli_fetch_array($query)){
     ?>
     <center>
@@ -48,9 +57,7 @@ if (isset($_SESSION['propietario'])) {
             <td><?php echo $fila['apellido_2'];?></td>
             <td><a href="../vistas/reservar_cita.php?nombre1=<?php echo $fila['identificacion_veterinario'];?>">Agregar</a></td>
         </tr>
-        
 <?php
-
     }
 ?>
     </table>
@@ -65,11 +72,26 @@ if (isset($_SESSION['propietario'])) {
     <h1><center>Reservar citas</center></h1>
     <label>Veterinarios disponibles</label>
                 <?php
+/**
+ * Id para llamar la identificación del propietario de esa sesión
+ */
                 $id = $_SESSION['propietario'];
-                 if(isset($_GET['nombre1'])){
-                     $nombre = $_GET['nombre1'];
-                    $consulta = mysqli_query($conexion, "SELECT * FROM tbl_veterinario  WHERE identificacion_veterinario = '$nombre'");
-                    while ($row = mysqli_fetch_array($consulta)){
+/**
+ * Si obtiene el nombre1
+ */
+                if(isset($_GET['nombre1'])){
+/**
+ * @var String $nombre
+ */
+                $nombre = $_GET['nombre1'];
+/**
+ * Se realiza la consulta a la base de datos de la tabla veterinario
+ */
+                $consulta = mysqli_query($conexion, "SELECT * FROM tbl_veterinario  WHERE identificacion_veterinario = '$nombre'");
+/**
+ * Ciclo para mostrar los datos de la consulta
+ */
+                while ($row = mysqli_fetch_array($consulta)){
                     ?>
                 <input type="text"  id="disponible" placeholder="" value="<?php echo $row['nombre_1']?><?php echo $row['nombre_2']?><?php echo $row['apellido_1']?><?php echo $row['apellido_2']?>" name="veterinario">
                 <?php
@@ -83,15 +105,27 @@ if (isset($_SESSION['propietario'])) {
                <label>Fecha</label>
                 <input type="date" placeholder="" name="fecha"  onkeypress="return SoloNumeros(event)" onpaste="return false" required="yes">
                 <label>Hora</label>
-                <select name="tipo_Consulta">
+                <select name="hora">
                 <option disabled selected>Hora disponible</option>
                 <?php 
+/**
+ * Si obtiene el nombre1
+ */
                 if(isset($_GET['nombre1'])){
+/**
+ * @var String $nombre
+ */
                 $nombre = $_GET['nombre1'];
+/**
+ * Se realiza la consulta a la base de datos de la tabla horario
+ */
                 $horario = mysqli_query($conexion , "SELECT * FROM tbl_horario WHERE identificacion_veterinario ='$nombre'");
+/**
+ * Ciclo para mostrar datos de la consulta
+ */
                 while($rowhora = mysqli_fetch_array($horario)){
                     ?>
-                    <option value="<?php echo $rowhora['identificacion_veterinario']?>"><?php echo $rowhora['hora_1'] ?></option>
+                    <option ><?php echo $rowhora['hora_1'] ?></option>
                  <?php
                 } }
                 ?>
@@ -112,7 +146,11 @@ if (isset($_SESSION['propietario'])) {
 </html>
 
 <?php
-}else{
+}
+/**
+ * Sino está la sesión  del propietario lo direccione al index
+ */
+else{
     header('Location: ../index.php');
 }
 

@@ -1,6 +1,9 @@
 <?php
 include '../php/conexion.php';
 session_start();
+/**
+ * Si existe la sesión del veterinario haga lo siguiente
+ */
 if (isset($_SESSION['veterinario'])) {
 ?>
 <!DOCTYPE html>
@@ -23,8 +26,17 @@ if (isset($_SESSION['veterinario'])) {
     <div class="columna-1">
     <?php
             include '../php/conexion.php';
+/**
+ * Id para llamar la identificación del veterinario de esa sesión
+ */
             $id_p = $_SESSION['veterinario'];
+/**
+ * Consulta en la base de datos de la tabla veterinario
+ */
             $query = mysqli_query($conexion,"SELECT * FROM tbl_veterinario WHERE `identificacion_veterinario` = '$id_p'");
+/**
+ * Ciclo para mostrar los datos de la consulta
+ */
             while($row = mysqli_fetch_array($query)){
               ?>
     <form action="../php/cod_editar_veterinario.php" method="POST">
@@ -69,7 +81,11 @@ if (isset($_SESSION['veterinario'])) {
 </body>
 </html>
 <?php
-}else{
+}
+/**
+ * Sino está la sesión del veterinario  lo direccione al index
+ */
+else{
     header('Location: ../index.php');
 }
 

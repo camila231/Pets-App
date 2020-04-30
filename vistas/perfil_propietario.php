@@ -1,6 +1,9 @@
 <?php
 include '../php/conexion.php';
 session_start();
+/**
+ * Si existe la sesión del propietario haga lo siguiente
+ */
 if (isset($_SESSION['propietario'])) {
 ?>
 <!DOCTYPE html>
@@ -22,8 +25,17 @@ if (isset($_SESSION['propietario'])) {
     <div class="columna-1">
     <?php
             include '../php/conexion.php';
+/**
+ * Id para llamar la identificación del propietario de esa sesión
+ */
             $id = $_SESSION['propietario'];
+/**
+ * Consulta en la base de datos de la tabla propietario
+ */
             $query = mysqli_query($conexion,"SELECT * FROM tbl_propietario WHERE `identificacion_propietario` = '$id'");
+/**
+ * Ciclo para mostrar los datos de la consulta
+ */
             while($row = mysqli_fetch_array($query)){
               ?>
     <form action="../php/cod_editar_propietario.php" method="post">
@@ -68,7 +80,11 @@ if (isset($_SESSION['propietario'])) {
 </body>
 </html>
 <?php
-}else{
+}
+/**
+ * Sino está la sesión  del propietario lo direccione al index
+ */
+else{
     header('Location: ../index.php');
 }
 
