@@ -151,6 +151,7 @@ if(isset($_POST['enviar'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto+Slab&display=swap" rel="stylesheet">
     <script type="text/javascript" src='../js/validaciones.js'></script>
+    <script type="text/javascript" src='../js/validacionesFormularios.js'></script>
     <link  href="../css/inicio_de_sesion.css" rel="stylesheet" type="text/css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="../images/LOGOO.PNG" type="image/x-icon">
@@ -161,13 +162,14 @@ if(isset($_POST['enviar'])){
     <div class="INICIO">
                            <h4>Inicio de sesión</h4>
                            <br>
-                           <form action="../php/cod_inicio_de_sesion.php" method="POST">
+                           <form action="../php/cod_inicio_de_sesion.php" method="POST" onsubmit="return inicio();">
                              <input type="text" placeholder="Ingrese su usuario" name="usuario" id="usuario"  onkeypress="return SoloNumerosyLetras(event)" onpaste="return false">
-                             <input type="password" placeholder="Ingrese su contraseña" name="password" id="password" onkeypress="return SoloNumerosyLetras(event)" onpaste="return false">
-                             <select class="rol" name="rol">
+                             <input type="password" placeholder="Ingrese su contraseña" name="password" id="pass" onkeypress="return SoloNumerosyLetras(event)" onpaste="return false">
+                             <select class="rol" id="rol" name="rol">
                                <option  disabled selected>Rol</option>
-                               <option value="propietario" >Propietario</option>
-                               <option value="veterinario" >Veterinario</option>
+                               <option id="rol" value="propietario" >Propietario</option>
+                               <option id="rol" value="veterinario" >Veterinario</option>
+                               <option id="rol" value="administrador" >Administrador</option>
                              </select>
                              <br>
                              <input id="boton" type="submit" value="Iniciar sesión">

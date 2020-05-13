@@ -9,7 +9,7 @@ include 'conexion.php';
  */
 $usuario=$_POST['usuario'];
 $clave=$_POST['password'];
-$rol=$_POST['rol'];
+$rol=$_POST['rol'];    
 /**
  * Si la variable rol es igual a propietario
  */
@@ -44,7 +44,8 @@ if($rol == 'veterinario') {
 /**
  * Se realiza una consulta en la tabla veterinario
  */
-    $veterinario = mysqli_query ($conexion, "SELECT *  FROM tbl_veterinario where usuario_veterinario = '$usuario' and clave_veterinario = '$clave'");
+    $veterinario = mysqli_query ($conexion, "SELECT *  FROM tbl_veterinario where usuario_veterinario = '$usuario' and clave_veterinario = '$clave'
+    and estado = 'Activo'");
  /**
   * Si veterinario es igual a 1
   * Se inicia sesión
@@ -66,4 +67,34 @@ else{
      
  }
  }
+ /**
+ * Si rol es igual a administrador
+ */
+if($rol == 'administrador') {
+/**
+* Se realiza una consulta en la tabla administrador
+*/
+    $administrador = mysqli_query ($conexion, "SELECT *  FROM tbl_administrador where usuario_administrador = '$usuario'
+     and clave_administrador = '$clave'");
+/**
+* Si administrador es igual a 1
+* Se inicia sesión
+*/
+    if(mysqli_num_rows ($administrador) == 1) {
+         session_start() ;
+         $row =mysqli_fetch_array($administrador) ;
+         $_SESSION ['administrador' ]  = $row['identificacion_administrador'] ;
+         header("Location: ../vistas/pagina_administrador.php");
+     
+     }
+/**
+* Sino encuentra resultados en la consulta le muestra una alerta y lo deja en el inicio de sesión
+*/
+    else{
+        echo "<script>alert('Los datos son incorrectos, por favor revise e intente nuevamente');</script>";
+        echo "<script>window.location='..';</script>";
+        
+         
+     }
+}
 ?>   
