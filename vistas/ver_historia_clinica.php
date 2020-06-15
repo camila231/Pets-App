@@ -2,7 +2,7 @@
 include '../php/conexion.php';
 session_start();
 /**
- * Si existe la sesión del veterinario haga lo siguiente
+ * Si inicia la sesión del veterinario haga lo siguiente
  */
 if (isset($_SESSION['veterinario'])) {
 ?>
@@ -19,20 +19,26 @@ if (isset($_SESSION['veterinario'])) {
     <title>Ver historia clínica</title>
 </head>
 <body>
-   <div id="containerT">
-<div id="containerheader"> 
-<?php require_once '../header/header_veterinario.php'; ?>
+<div id="containerT">
+    <!--Div que contiene el header-->
+    <div id="containerheader"> 
+        <!--Se requiere la carpeta header que contiene el menú de navegación de la sesión del veterinario -->
+        <?php require_once '../header/header_veterinario.php'; ?>
     </div>
-<br>
+    <!--Br para un salto de línea-->
+    <br>
+    <!--Br para un salto de línea-->
+    <br>
+    <div class="form">
+        <h1><center>Historias clínicas<center></h1>
+        <!--Buscador-->
+        <label for="caja_busqueda" hidden >Buscar</label>
+        <input type="text" name="caja_busqueda" id="caja_busqueda"><ion-icon name="search"></ion-icon></input>
+    </div>
+        <!--Br para un salto denlínea-->
         <br>
-            <div class="form">
-            <h1><center>Historias clínicas<center></h1>
-            <label for="caja_busqueda" hidden >Buscar</label>
-            <input type="text" name="caja_busqueda" id="caja_busqueda"><ion-icon name="search"></ion-icon></input>
-            
-            
-        </div>
-        <br>
+    <!--Div que llama por el id datos la tabla que contiene las historias clínicas para así mirar si encuentra datos 
+    en la tabla-->
     <div id="datos"></div>
 
 <script type="text/javascript" src="../js/jquery.min.js"></script>
