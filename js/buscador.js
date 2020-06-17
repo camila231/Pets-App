@@ -38,20 +38,20 @@ function buscar_datos(consulta){
  * Se ejecuta en la caja de busqueda
  */
 $(document).on('keyup','#caja_busqueda', function(){
-/**
- * Se captura el valor que tiene #caja_busqueda
- */
-	var valor = $(this).val();
-/**
- * Si está vacio mostrará todos los datos
- */
-	if (valor != "") {
-		buscar_datos(valor);
-	}
-/**
- * Sino no muestra datos
- */
-	else{
-		buscar_datos();
-	}
+	/**
+	 * Se captura el valor que tiene #caja_busqueda
+	 */
+		var valor = $(this).val();
+	/**
+	 * Si está vacio mostrará todos los datos
+	 */
+		if (valor != "") {
+			buscar_datos(valor);
+		}
+	/**
+	 * Sino no muestra datos
+	 */
+		else{
+			buscar_datos();
+		}
 });

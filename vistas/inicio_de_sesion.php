@@ -1,7 +1,10 @@
 <?php
+/**
+ * Se requiere la conexión de la base de datos
+ */
 require '../php/conexion.php';
 /**
- * Librerias para utilizar PhpMailer
+ * Se requiere librerias para utilizar PhpMailer
  */
 require '../librerias/Exception.php';
 require '../librerias/PHPMailer.php';
@@ -42,7 +45,7 @@ if(isset($_POST['enviar'])){
  */
     $actualizar = $conexion ->query("UPDATE tbl_propietario SET token = '$token' WHERE email_propietario = '$email'");
     $ruta = 'http://localhost/Pets_App/vistas/nueva_clave.php?nombre='.$nombre['nombre_1']."&token".$nombre['token'];
-    $mensaje = "Código para recuperar su contraseña" ." ".$token. " ". "<a href='$ruta'>Para cambiar tu contraseña da click aquí</a>";
+    $mensaje = " ". "<a href='$ruta'>Para cambiar tu contraseña da click aquí</a>";
   }else{
   echo "<script>alert('Los datos son incorrectos, por favor revise e intente nuevamente');</script>";
   echo "<script>window.location='..';</script>";
@@ -74,7 +77,7 @@ if(isset($_POST['enviar'])){
  */
       $actualizar = $conexion ->query("UPDATE tbl_veterinario SET token = '$token' WHERE email_veterinario = '$email'");
       $ruta = 'http://localhost/Pets_App/vistas/nueva_clave.php?nombre='.$nombre['nombre_1']."&token".$nombre['token'];
-      $mensaje = "Código para recuperar su contraseña" ." ".$token. " ". "<a href='$ruta'>Para cambiar tu contraseña da click aquí</a>";
+      $mensaje =  " ". "<a href='$ruta'>Para cambiar tu contraseña da click aquí</a>";
     }else{
     echo "<script>alert('Los datos son incorrectos, por favor revise e intente nuevamente');</script>";
     echo "<script>window.location='..';</script>";
@@ -90,13 +93,16 @@ if(isset($_POST['enviar'])){
  * Habilitar el Debug
  */
         $mail->SMTPDebug = 0;
+/**
+ * Configuración del servidor SMTP para envio
+ */
         $mail->Host = 'smtp.gmail.com';
 /**
  * Habilitar autenticacion SMTP
  */
         $mail->SMTPAuth = true;
 /**
- * Puerto
+ * Puerto TCP para conexión
  */
 			  $mail->Port = 587;
 			  
@@ -106,7 +112,7 @@ if(isset($_POST['enviar'])){
  */
         $mail->Username = "kevinparra2709@gmail.com";
 /**
- * Clave del correo que se va utilizar para el emvio
+ * Clave del correo que se va utilizar para el envio
  */
         $mail->Password = "3117027938kevin";
 /**
@@ -118,7 +124,7 @@ if(isset($_POST['enviar'])){
  */
         $mail->addAddress($email);
 /**
- * Establece el tipo de mensaje a HTML
+ * Establece el formato de HTML
  */
         $mail->isHTML(true);
 /**
@@ -151,32 +157,37 @@ if(isset($_POST['enviar'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto+Slab&display=swap" rel="stylesheet">
     <script type="text/javascript" src='../js/validaciones.js'></script>
-    <script type="text/javascript" src='../js/validacionesFormularios.js'></script>
+    <script type="text/javascript" src='../js/validarInicioDeSesion.js'></script>
     <link  href="../css/inicio_de_sesion.css" rel="stylesheet" type="text/css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="../images/LOGOO.PNG" type="image/x-icon">
     <title>Inicio de sesión</title>
 </head>
 <body>
+<!--Se requiere la carpeta header que contiene el menú de navegación--> 
 <?php require_once '../header/header.php'; ?>
-    <div class="INICIO">
-                           <h4>Inicio de sesión</h4>
-                           <br>
-                           <form action="../php/cod_inicio_de_sesion.php" method="POST" onsubmit="return inicio();">
-                             <input type="text" placeholder="Ingrese su usuario" name="usuario" id="usuario"  onkeypress="return SoloNumerosyLetras(event)" onpaste="return false">
-                             <input type="password" placeholder="Ingrese su contraseña" name="password" id="pass" onkeypress="return SoloNumerosyLetras(event)" onpaste="return false">
-                             <select class="rol" id="rol" name="rol">
-                               <option  disabled selected>Rol</option>
-                               <option id="rol" value="propietario" >Propietario</option>
-                               <option id="rol" value="veterinario" >Veterinario</option>
-                               <option id="rol" value="administrador" >Administrador</option>
-                             </select>
-                             <br>
-                             <input id="boton" type="submit" value="Iniciar sesión">
-                             <center><div class="reset-password" style="margin-top:-9px;">
-                              <a href="../vistas/recuperar_clave.php">Olvide mi contraseña</a>
-                              </div> </center>
-                            </form>
-                         </div>    
+<!--Div que contiene el formulario para iniciar sesión--> 
+<div class="INICIO">
+  <h4>Inicio de sesión</h4>
+  <!--Br para dar un salto de línea --> 
+  <br>
+  <!--Formulario para iniciar sesión--> 
+  <form action="../php/cod_inicio_de_sesion.php" method="POST" onsubmit="return inicio();">
+    <input type="text" placeholder="Ingrese su usuario" name="usuario" id="usuario"  onkeypress="return SoloNumerosyLetras(event)" onpaste="return false">
+    <input type="password" placeholder="Ingrese su contraseña" name="password" id="pass" onkeypress="return SoloNumerosyLetras(event)" onpaste="return false">
+    <select class="rol" id="rol" name="rol">
+    <option  disabled selected>Rol</option>
+    <option id="rol" value="propietario" >Propietario</option>
+    <option id="rol" value="veterinario" >Veterinario</option>
+    <option id="rol" value="administrador" >Administrador</option>
+    </select>
+    <br>
+    <input id="boton" type="submit" value="Iniciar sesión">
+    <center><div class="reset-password" style="margin-top:-9px;">
+    <a href="../vistas/recuperar_clave.php">Olvide mi contraseña</a>
+    </div> </center>
+  </form>
+  <!--Fin del formulario --> 
+</div>    
 </body>
 </html>

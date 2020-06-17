@@ -1,8 +1,12 @@
 <?php
+/**
+ * Se incluye la conexión de la base de datos
+ */
 include '../php/conexion.php';
 session_start();
 /**
- * Si existe la sesión del propietario haga lo siguiente
+ * Si la sesión del propietario esta iniciada
+ * va dejar ver esta vista
  */
 if (isset($_SESSION['propietario'])) {
 ?>
@@ -18,22 +22,25 @@ if (isset($_SESSION['propietario'])) {
     <title>Cambiar contraseña</title>
 </head>
 <body>
-        </script>
-    <div id="container">
+<!--Div que contiene el menú y otro div que contiene el formulario--> 
+<div id="container">
+    <!--Se requiere la carpeta header que contiene el menú de navegación de la sesión del propietario--> 
     <?php require_once '../header/header_propietario.php'; ?>
-    <div class="cambiar">
-                <h4>Cambiar Clave</h4>
-                <br>
-                <form action="../php/cod_cambiar_clave.php" method="POST">
-                    <input type="text" name="clave_propietario" id="" placeholder="Ingrese su contraseña actual">
-                    <input type="password" name="nuevaPassword" id="" placeholder="Nueva contraseña">
-                    <input type="password" name="confirmarPassword" id="" placeholder="Confirmar contraseña">
-                    <input type="submit" name="btn_cambiar" id="boton" value="Cambiar contraseña">
-                </form>
+        <!--Div que contiene el formulario para cambiar la contraseña del veterinario--> 
+        <div class="cambiar">
+            <h4>Cambiar Clave</h4>
+            <!--Br para dar un salto de línea--> 
+            <br>
+            <!--Formulario para cambiar la contraseña del veterinario--> 
+            <form action="../php/cod_cambiar_clave.php" method="POST">
+                <input type="text" name="clave_propietario" id="" placeholder="Ingrese su contraseña actual">
+                <input type="password" name="nuevaPassword" id="" placeholder="Nueva contraseña">
+                <input type="password" name="confirmarPassword" id="" placeholder="Confirmar contraseña">
+                <input type="submit" name="btn_cambiar" id="boton" value="Cambiar contraseña">
+            </form>
+            <!--Fin del formulario--> 
 </div> 
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="../js/alertas.js"></script>
 </body>
 </html>
 <?php

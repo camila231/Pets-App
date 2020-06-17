@@ -1,8 +1,12 @@
 <?php
+/**
+ * Se incluye la conexión a la base de datos
+ */
 include '../php/conexion.php';
 session_start();
 /**
- * Si existe la sesión del veterinario haga lo siguiente
+ * Si la sesión del veterinario esta iniciada
+ * va dejar ver esta vista
  */
 if (isset($_SESSION['veterinario'])) {
 ?>
@@ -19,28 +23,28 @@ if (isset($_SESSION['veterinario'])) {
 </head>
 <body>    
 <div id="container">
-<?php require_once '../header/header_veterinario.php'; ?>
-
-
+    <!--Se requiere la carpeta header que contiene el menú navegador de la sesión veterinario --> 
+    <?php require_once '../header/header_veterinario.php'; ?>
+    <!--Div que contiene el titulo--> 
     <div class="titulo"><h1><center>Perfil veterinario</center></h1></div>
     <div class="columna-1">
-    <?php
+        <?php
             include '../php/conexion.php';
-/**
- * Id para llamar la identificación del veterinario de esa sesión
- */
+            /**
+             * Id para llamar la identificación del veterinario de esa sesión
+             */
             $id_p = $_SESSION['veterinario'];
-/**
- * Consulta en la base de datos de la tabla veterinario
- */
+            /**
+             * Consulta en la base de datos de la tabla veterinario
+             */
             $query = mysqli_query($conexion,"SELECT * FROM tbl_veterinario WHERE `identificacion_veterinario` = '$id_p'");
-/**
- * Ciclo para mostrar los datos de la consulta
- */
+            /**
+             * Ciclo para mostrar los datos de la consulta
+             */
             while($row = mysqli_fetch_array($query)){
-              ?>
-    <form action="../php/cod_editar_veterinario.php" method="POST">
-    <textarea hidden name="identificacionveterinario" id="" cols="30" rows="10"><?php echo $row['identificacion_veterinario'];?></textarea>
+        ?>
+        <form action="../php/cod_editar_veterinario.php" method="POST">
+            <textarea hidden name="identificacionveterinario" id="" cols="30" rows="10"><?php echo $row['identificacion_veterinario'];?></textarea>
             <label for="fname" class="letra">Primer nombre</label>
             <input type="text" class=" form1" placeholder="Ingrese su primer nombre" name="nombre1" value="<?php echo $row['nombre_1'];?>">
 
@@ -55,28 +59,29 @@ if (isset($_SESSION['veterinario'])) {
 
             <label for="fname" class="letra">E-mail</label>
             <input type="email" class=" form1" placeholder="Ingrese su correo e-mail" name="emailveterinario" value="<?php echo $row['email_veterinario'];?>">
-  
+    
     </div>
     <div class="columna-2">    
-    <label for="fname" class="letra">Telefono</label>
-            <input type="text" class=" form1" placeholder="Ingrese su número de telefono" name="telefono1" value="<?php echo $row['telefono_1'];?>">
+        <label for="fname" class="letra">Telefono</label>
+        <input type="text" class=" form1" placeholder="Ingrese su número de telefono" name="telefono1" value="<?php echo $row['telefono_1'];?>">
 
-            <label for="fname" class="letra">Celular</label>
-            <input type="text" class=" form1" placeholder="Ingrese su número de celular" name="celular1" value="<?php echo $row['celular_1'];?>">
+        <label for="fname" class="letra">Celular</label>
+        <input type="text" class=" form1" placeholder="Ingrese su número de celular" name="celular1" value="<?php echo $row['celular_1'];?>">
 
-            <label for="fname" class="letra">Usuario</label>
-            <input type="text" class=" form1" placeholder="Ingrese su usuario" name="usuarioveterinario" value="<?php echo $row['usuario_veterinario'];?>">
-
-
-            <?php
+        <?php
+        /**
+         * } Se cierra el ciclo
+         */
         }
         ?>  
-        </div>
+    </div>
+        <!--Br para salto de línea--> 
         <br>
         <input type="submit" name="btn" id="boton" value="Actualizar">
         <br>
-    </form>
-</div>
+        </form>
+        <!--Fin del formulario --> 
+    </div>
 </div>    
 </body>
 </html>

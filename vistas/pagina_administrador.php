@@ -1,8 +1,12 @@
 <?php
+/**
+ * Se incluye la conexión a la base de datos
+ */
 include '../php/conexion.php';
 session_start();
 /**
- * Si existe la sesión del administrador haga lo siguiente
+ * Si la sesión del administrador esta iniciada
+ * va dejar ver esta vista
  */
 if (isset($_SESSION['administrador'])) {
 ?>
@@ -33,10 +37,12 @@ if (isset($_SESSION['administrador'])) {
             </nav>
     </header>
 </div>
+<!--Br para dar un salto de línea --> 
 <br>
 <!--titulo --> 
 <center><h1>Habilitar y deshabilitar veterinarios</h1></center>
 <br>
+<!--Div que contiene otro div que tiene una tabla --> 
 <div id="container">
     <div class="colum">
         <center>
@@ -67,15 +73,15 @@ if (isset($_SESSION['administrador'])) {
         <tr>
             <form  action="../vistas/pagina_administrador.php"  method="POST" >
                     <td><?php echo $row['identificacion_veterinario'];?></td>
-                    <td><?php echo $row['nombre_1'];?></td>
-                    <td><?php echo $row['apellido_1'];?></td>
+                    <td><?php echo $row['nombre_1'];?> <?php echo $row['nombre_2'];?></td>
+                    <td><?php echo $row['apellido_1'];?> <?php echo $row['apellido_2'];?></td>
                     <td><?php echo $row['email_veterinario'];?></td>
                     <td><?php echo $row['telefono_1'];?></td>
                     <td><?php echo $row['celular_1'];?></td>
                     <td id="foto"><?php echo '<img src="'.$row["foto"].'">';?></td>
                     <td><?php echo $row['estado'];?></td>
-                    <td><input type="submit" value="Activo" name="activo"><br><br>
-                    <input type="submit" value="Inactivo" name="inactivo"></td>
+                    <td><input type="submit" value="Activo" class="activo" name="activo"><br><br>
+                    <input type="submit" value="Inactivo" class="inactivo" name="inactivo"></td>
             </form>
         </tr>
                 <?php }  ?>

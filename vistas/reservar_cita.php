@@ -1,8 +1,12 @@
 <?php
+/**
+ * Se incluye la conexión de la base de datos
+ */
 include '../php/conexion.php';
 session_start();
 /**
- * Si existe la sesión del propietario haga lo siguiente
+ * Si la sesión del propietario esta iniciada
+ * va dejar ver esta vista
  */
 if (isset($_SESSION['propietario'])) {
 ?>
@@ -21,6 +25,7 @@ if (isset($_SESSION['propietario'])) {
 </head>
 <body>
 <div id="container">
+ <!--Se requiere la carpeta header que contiene el menú de navegación de la sesión del propietario-->
 <?php require_once '../header/header_propietario.php'; ?>
 <!--ventana modal --> 
 <div class="popup">
@@ -33,7 +38,7 @@ if (isset($_SESSION['propietario'])) {
 /**
  * Consulta a la base de datos de la tabla veterinario
  */
-    $query = mysqli_query($conexion,"SELECT * FROM tbl_veterinario WHERE estado = 'Disponible'");
+    $query = mysqli_query($conexion,"SELECT * FROM tbl_veterinario WHERE disponibilidad = 'Disponible'");
 /**
  * Ciclo para mostrar los datos de la consulta
  */
@@ -117,7 +122,8 @@ if (isset($_SESSION['propietario'])) {
  */
                 $nombre = $_GET['nombre1'];
 /**
- * Se realiza la consulta a la base de datos de la tabla horario
+ * Se realiza la consulta a la base de datos de la tabla horario de la identificación del veterinario que trae por la 
+ * url desde la sesión del veterianrio
  */
                 $horario = mysqli_query($conexion , "SELECT * FROM tbl_horario WHERE identificacion_veterinario ='$nombre'");
 /**

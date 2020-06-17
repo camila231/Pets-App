@@ -8,6 +8,7 @@
     <title>Document</title>
 </head>
 <body>
+<!--Div que contiene el menú de navegación de la sesión del propietario-->
 <div class="menu">
     <header>
     <div id="logo"><img src="../images/LOGOO.PNG" class="logo_imagen"><a class="pets_app">Pets App</a></div>
@@ -17,7 +18,7 @@
                     </li>
                     <li><a href="../vistas/agregar_mascotas.php">Mis mascotas</a>
                       </li>
-                      <li><a href="#">Chat</a>
+                      <li><a target="_blank" href="http://localhost:6677/">Chat</a>
                     </li>
                       <li><a href="#">Servicios</a>
                         <ul>

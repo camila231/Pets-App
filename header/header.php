@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+<!--Div que contiene el menú de navegación-->
 <div id="containerheader"> 
         <header>
             <nav class="nav">
@@ -16,14 +17,14 @@
                     </li>
                     <li><a href="../vistas/servicios.php">Servicios</a>
                     </li>
-                    <li><a href="../vistas/inicio_de_sesion.php">Iniciar sesión</a>
-                    </li>
                     <li><a href="#">Registrarse</a>
                         <ul>
+                        <li><a href="../vistas/registrar_propietario.php">Propietario</a></li>
                            <li><a href="../vistas/registrar_veterinario.php">Veterinario</a></li>
-                           <li><a href="../vistas/registrar_propietario.php">Propietario</a></li>
                         </ul>
                       </li>
+                      <li><a href="../vistas/inicio_de_sesion.php">Iniciar sesión</a>
+                    </li>
                 </ul>
             </nav>
         </header>

@@ -1,6 +1,10 @@
 <?php
 include '../php/conexion.php';
 session_start();
+/**
+ * Si la sesión del veterinario esta iniciada
+ * va dejar ver esta vista
+ */
 if (isset($_SESSION['veterinario'])) {
 ?>
 <!DOCTYPE html>
@@ -42,12 +46,12 @@ if (isset($_SESSION['veterinario'])) {
 <br>
 
 <h5><?php echo $row['nombre_1'];?> <?php echo $row['apellido_1'];?>, desde este momento tu estado para atender nuestros
-servicios es disponible, si no <br>lo deseas así debes ingresar no disponible, cuando quieras volver a estar disponible lo único
-que <br> tienes que hacer es ingresar disponible.</h5>
+servicios es no disponible, si no <br>lo deseas así debes ingresar  disponible, cuando no quieras estar  disponible lo único
+que <br> tienes que hacer es ingresar no disponible.</h5>
 <br>
 <center><form action="../vistas/pagina_veterinario.php" method="POST">
 <textarea hidden name="identificacion_veterinario" id="" cols="30" rows="10"><?php echo $row['identificacion_veterinario'];?></textarea>
-    <input type="text" name="estado" disabled class="estado" value="<?php echo $row['estado'];?>">
+    <input type="text" name="estado" disabled class="estado" value="<?php echo $row['disponibilidad'];?>">
     <select name="estado" class="estado">
                 <option disable selected>Disponibilidad</option>
                 <option >Disponible</option>
@@ -65,7 +69,7 @@ if (isset($_POST['btn_estado'])){
     $estado = $_POST['estado'];
     $identificacion_veterinario = $_POST['identificacion_veterinario'];
 
-  mysqli_query($conexion,"UPDATE tbl_veterinario SET estado='$estado' WHERE identificacion_veterinario='$identificacion_veterinario'") or die (mysqli_error($conexion));
+  mysqli_query($conexion,"UPDATE tbl_veterinario SET disponibilidad='$estado' WHERE identificacion_veterinario='$identificacion_veterinario'") or die (mysqli_error($conexion));
 echo "<script>alert('Se actualizo exitosamente..')</script>";
 echo "<script> window.location = '../vistas/pagina_veterinario.php'</script>";
 }
@@ -90,11 +94,47 @@ echo "<script> window.location = '../vistas/pagina_veterinario.php'</script>";
     ?>
     <textarea hidden  name="identificacion" cols="30" rows="10"><?php echo $fila['identificacion_veterinario'];?></textarea>
     <input type="text" class="hora" disabled value="<?php echo $fila['hora_1'];?>" name="identificacion" >
-    <a href="../php/cod_borrar_hora.php?hora=<?php echo $fila['codigo_hora']; ?>" ><input type="submit"  value="borrar"></a>
+    <a href="../php/cod_borrar_hora.php?hora=<?php echo $fila['codigo_hora']; ?>" ><input type="submit" class="borrar_hora" value="Borrar"></a>
     <?php
     }
     ?>
 </div>
+    </div><br>
+    <hr>
+    <div>
+    <center><h1>Reservar cita</h1>
+       <table>
+       <tr>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Tipo de consulta</th>
+            <th>Veterinario</th>
+            <th>Acción</th>
+            </tr> 
+            <?php
+            include '../php/conexion.php';
+/**
+ * Consulta en la base de datos de la tabla reservar cita
+ */
+            $query = mysqli_query($conexion,"SELECT * FROM tbl_reservar_cita");
+/**
+ * Ciclo para mostrar los datos de la consulta
+ */
+            while($row = mysqli_fetch_array($query)){
+              ?>
+            <tr>
+            <form  action="#"  method="POST" >
+            <textarea hidden name="codigo_reserva" id="" cols="30" rows="10"><?php echo $row['codigo_reservar'];?></textarea>
+            <td><?php echo $row['fecha_reserva'];?></td>
+            <td><?php echo $row['hora_reserva'];?></td>
+            <td><?php echo $row['tipo_consulta'];?></td>
+            <td><?php echo $row['veterinario'];?></td>
+            <td><center><input type="submit" value="Atendido"  class="atendido" name=""><center></td>
+            </form>
+        </tr>
+        <?php }  ?>
+      </table>
+      </center>
     </div>
 </body>
 </html>
@@ -117,7 +157,11 @@ if (isset($_POST['btn'])){
 ?>
 <!--fin horario-->
 <?php
-}else{
+}
+/**
+ * Sino está la sesión del veterinario  lo direccione al index
+ */
+else{
     header('Location: ../index.php');
 }
 ?>

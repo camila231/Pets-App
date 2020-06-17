@@ -6,6 +6,11 @@
 <?php
 /**
  * Conexión a la base de datos
+ * @var $username
+ * @var $servername
+ * @var $password
+ * @var $dbname
+ * @var $conexion
  */
 	$servername = "localhost";
     $username = "root";
@@ -20,6 +25,8 @@
     $salida = "";
 /**
  * Consulta de busqueda en la tabla historia clínica
+ * @var $query
+ * @var $resultado
  */
     $query = "SELECT * FROM tbl_historia_clinica ";
 

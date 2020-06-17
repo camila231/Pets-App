@@ -10,9 +10,12 @@
         <title>Servicios</title>
 </head>
 <body>
+<!--Se requiere la carpeta header que contiene le menú de navegación -->
 <?php require_once '../header/header.php'; ?>
-    <div class="w3-container">
-<br><br>
+<!--Div que contiene otros div con información y imagenes -->
+<div class="w3-container">
+    <!--Br para salto de línea-->
+    <br><br>
   <div class="card_1">
    <center> <img src="../images/vacuna.png" alt="Alps" class="img_vacuna"></center>
     <div class="card_2">

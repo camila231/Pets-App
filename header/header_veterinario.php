@@ -10,6 +10,7 @@
     <title>Document</title>
 </head>
 <body>
+<!--Div que contiene el menú de navegación de la sesión del veterinario-->
     <div class="menu">
     <header>
     <div id="logo"><img src="../images/LOGOO.PNG" class="logo_imagen"><a class="pets_app">Pets App</a></div>
@@ -19,7 +20,7 @@
                     </li>
                     <li><a href="../vistas/perfil_veterinario.php">Perfil</a>
                     </li>
-                      <li><a href="#">Chat</a>
+                      <li><a target="_blank" href="http://localhost:6677/">Chat</a>
                     </li>
                     <li><a href="#">Historia clínica</a>
                     <center>
@@ -32,6 +33,10 @@
                       <li><a href="../vistas/cambiar_clave_veterinario.php">Cambiar contraseña</a>
                     </li>
                     <?php
+                    /**
+                     * @var $consulta       Consulta para traer los datos de la tabla solicitar cita
+                     * @var $contar         contrar los datos que trae la consulta
+                     */
                     $consulta = mysqli_query($conexion,"SELECT * from tbl_solicitar_cita WHERE  leido = 0");
                     $contar = mysqli_num_rows($consulta);
                     ?>

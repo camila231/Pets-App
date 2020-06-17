@@ -2,7 +2,8 @@
 include '../php/conexion.php';
 session_start();
 /**
- * Si inicia la sesión del veterinario haga lo siguiente
+ * Si la sesión del veterinario esta iniciada
+ * va dejar ver esta vista
  */
 if (isset($_SESSION['veterinario'])) {
 ?>
