@@ -1,78 +1,29 @@
+/* Damos estilos generales con el selector universal */
 *{
 	margin:0px;
 	padding:0px;
 	font-family: 'Roboto Slab', serif;
 }
-#containerheader{
-    background-color: #80E2E7;
-
-}
-#logo{
-    position: absolute;
-    left:30px;
-    top:6px;
-}
-.logo_imagen{
-	width: 51px;
-}
-.pets_app{
-	font-size: 30px;
-	color: black;
-    font-weight: bold;
-    position: relative;
-    top:-10px;
-}
-header{
-    width: 100%;
-    z-index: -1;
-}
-.nav{
-    margin-right:1%;
-}
-.nav ul{
-   display: flex;
-   color: white;
-   background-color: #80E2E7;
-    margin:0;
-   justify-content: flex-end;
-   list-style:none;
-}
-.nav li a{
-    display: block;
-    padding: 20px 20px;
-    color:white;
-    font-size: 15px;
-    text-decoration:none;
-}
-.nav ul ul{
-    width: 125px;
-    display: block;
-	background-color: #80E2E7;
-    position: absolute;
-    top: 60px;
-    margin-left: 8px;
-    opacity: 0;
-    
-}
-.nav ul li:hover ul{
-    opacity: 1;
-}
+/*Div que contiene otros div*/
 .container{
     width: 95%;
     height: 50%;
     border: 1px solid black;
     margin-left: 2.4%;
 }
+/*Div que contiene el formulario*/
 .container1{
     width: 50%;
     height: auto;
 }
+/*Div que contiene el formulario*/
 .container2{
     width: 50%;
     height: auto;
     float: right;
     margin-top: -27.3%;
 }
+/*Titulo del formulario*/
 .titulo{
     font-size: 40px;
 }
@@ -80,9 +31,11 @@ header{
     width: 48px; 
     height: 45px;
 }
+/*Letra del label del formulario*/
 .letra{
     margin-left: 5%;
 }
+/*Inputs del formulario*/
 .form1, #sexo{
     width: 90%;
     padding: 7px 20px;
@@ -92,7 +45,7 @@ header{
     border:  1px solid #80E2E7;
     border-radius: 3%;
 }
-
+/*Input del formulario*/
 .form3{
     width: 90%;
     padding: 45px 20px;
@@ -101,16 +54,19 @@ header{
     border:  1px solid #80E2E7;
     margin-left: 5%;
 }
+/*Botón del formulario*/
 .boton{
     width: 25%;
     height: 40%;
     margin-left: 38%;
     margin-top: -2%;
     margin-bottom: 9px;
+    padding-bottom: 5px;
     position: relative;
-    border: 1px solid #2ECC71;
+    border: 1px solid #80E2E7;
 	font-size: 19px;
 	color: black;
-    background: #2ECC71;
+    background: #80E2E7;
     box-sizing: border-box;
+    cursor: pointer;
 }

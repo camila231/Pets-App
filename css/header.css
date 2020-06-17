@@ -1,13 +1,16 @@
+/*Div que contiene el menú*/
 #containerheader{
 	width: 100%;
     height: auto;
     background-color: #80E2E7;
 }
+/*Div que contiene el logo del aplicativo web*/
 .logo_imagen{
 	width: 48px;
 	margin-right: 10px;
 	margin-top: 5px;
 }
+/*Nombre del aplicativo web*/
 .pets_app{
 	font-size: 25px;
 	margin-right: 52%;
@@ -15,6 +18,7 @@
 	color: black;
 	font-weight: bold;
 }
+/*Inicio del menú*/
 header{
     width: 100%;
     z-index: -1;
@@ -49,3 +53,4 @@ header{
 .nav ul li:hover ul{
     opacity: 1;
 }
+/*Fin del menú*/

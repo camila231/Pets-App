@@ -1,12 +1,15 @@
+/* Damos estilos generales con el selector universal */
 *{
     margin: 0%;
     padding: 0%;
     font-family: 'Roboto Slab', serif;
 }
+/*Div que contiene todo lo de la vista*/
 div#container{
     display: grid;
     grid-template-columns: 100%;
 }
+/*Formulario*/
 .solicitar_cita{
     margin:auto;
     margin-top: 80px;
@@ -18,6 +21,7 @@ div#container{
     padding-right:20px;
     padding-top: 20px
 }
+/*Input del formulario*/
 .solicitar_cita input{
     width: 100%;
     padding: 5px;
@@ -28,6 +32,7 @@ div#container{
     margin-bottom: 5px;
     outline: none;
 }
+/*Select del formulario*/
 .solicitar_cita select{
     width: 102%;
     padding: 5px;
@@ -38,6 +43,7 @@ div#container{
     margin-bottom: 20px;
     outline: none;
 }
+/*Botón del formulario*/
 .solicitar_cita button{
     width: 102%;
     padding: 5px;
@@ -54,4 +60,4 @@ div#container{
 .solicitar_cita button:hover{
     background: #80E2E7;
     color:  black;
-  }
+}

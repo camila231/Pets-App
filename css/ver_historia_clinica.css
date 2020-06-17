@@ -1,12 +1,15 @@
+/* Damos estilos generales con el selector universal */
 *{
 	margin:0px;
 	padding:0px;
 	font-family: 'Roboto Slab', serif;
 }
+/*Div que contiene el header*/
 #containerT{
     display: grid;
     grid-template-columns: 100%;
 }
+/*Div que contiene el buscador*/
 div.buscador{
     grid-column-start: 1;
     grid-column-end: 4;
@@ -17,6 +20,7 @@ div.buscador{
     margin-left: 7%;
     border-radius: 7px;
 }
+/*Tabla*/
 table{
     width: 100%;
 }
@@ -30,6 +34,7 @@ table{
 td{
     border-bottom: 1px solid #80E2E7;
 }
+/*Boton para ver la historia clinica*/
 .boton{
     width: 50%;
 	height: 35px;
@@ -45,7 +50,7 @@ td{
     background:#80E2E7;
 	color:white;
 }
-/*BUSCADOR*/
+/*Buscador*/
 .form_search{
     position: relative;
     display: flex;
@@ -63,12 +68,14 @@ td{
     cursor: pointer;
   
 }
+/*Input del buscador*/
 #caja_busqueda{
     width: 12%;
     padding: 4px;
     margin-left: 85%;
     border: 1px solid #80E2E7;
 }
+/*Icono del buscador*/
 .icono{
     margin-right: 5px;
 }

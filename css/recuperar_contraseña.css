@@ -1,7 +1,9 @@
+/* Damos estilos generales con el selector universal */
 *{
     margin: 0;
     padding: 0;
 }
+/*Formulario*/
 form{
     margin:auto;
     margin-top: 140px;
@@ -13,19 +15,24 @@ form{
     padding-right:20px;
     padding-top: 20px
 }
+/*Titulo del formulario*/
 h1{
     font: bold;
 }
+/*Letra del label del formulario*/
 label{
     font-size: 19px;
     margin-right: 140px;
 }
+/*Input del formulario de la vista de nueva_clave*/
 .nuevacontraseña{
     margin-right: 170px;
 }
+/*Letra del label del formulario de la vista de nueva_clave*/
 .codigo{
-    margin-right: 255px;
+    margin-right: 205px;
 }
+/*Input del formulario*/
 input{
     width: 80%;
     padding: 5px;
@@ -36,6 +43,7 @@ input{
     margin-bottom: 5px;
     outline: none;
 }
+/*Select del formulario*/
 .rol{
     width: 83%;
     padding: 5px;
@@ -46,6 +54,7 @@ input{
     margin-bottom: 5px;
     outline: none;
 }
+/*Botón del formulario*/
 .button{
     width: 83%;
     padding: 5px;

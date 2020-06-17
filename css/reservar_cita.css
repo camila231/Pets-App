@@ -1,8 +1,10 @@
+/* Damos estilos generales con el selector universal */
 *{
     margin: 0%;
     padding: 0%;
     font-family: 'Roboto Slab', serif;
 }
+/*Div que contiene todo lo de la vista*/
 div#container{
     display: grid;
     grid-template-columns: 100%;
@@ -28,6 +30,7 @@ div#container{
     border-radius: 5px;
     position: relative;
 }
+/*Cerrar modal*/
 .close{
     position: absolute;
     font-size: 40px;
@@ -37,9 +40,7 @@ div#container{
     padding: 5px;
     cursor: pointer;
 }
-th,td{
-    padding-left: 10px;
-}
+/*Formulario*/
 .reservar_cita{
     margin:auto;
     margin-top: 10px;
@@ -51,6 +52,7 @@ th,td{
     padding-right:20px;
     padding-top: 20px
 }
+/*Input del formulario*/
 .reservar_cita input{
     width: 100%;
     padding: 5px;
@@ -61,6 +63,7 @@ th,td{
     margin-bottom: 5px;
     outline: none;
 }
+/*Input de los veterinarios disponibles*/
 #disponible{
     width: 90%;
     padding: 5px;
@@ -71,11 +74,13 @@ th,td{
     margin-bottom: 5px;
     outline: none;
 }
+/*Icono que muestra los veterinarios disponibles*/
 #open{
     font-size: 27px;
     margin-left: 3px;
     cursor: pointer;
 }
+/*Select del formulario*/
 .reservar_cita select{
     width: 102%;
     padding: 5px;
@@ -86,6 +91,7 @@ th,td{
     margin-bottom: 5px;
     outline: none;
 }
+/*Botón del formulario*/
 .reservar_cita button{
     width: 102%;
     padding: 5px;
@@ -97,7 +103,7 @@ th,td{
     font-size:15px;
     background: none;
     outline: none;
-
+    cursor: pointer;
 }
 .reservar_cita button:hover{
     background: #80E2E7;
